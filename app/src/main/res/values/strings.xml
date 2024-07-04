@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">EBAS Apps</string>
-    <string name="Alamat_Email">Alamat Email</string>
+    <string name="book_title_1">Menjadi Guru Hebat Di Era Revolusi Industri 4.0</string>
+    <string name="book_author_1">Dr.Non Syafriafdi,S.Pd,M.Pd.</string>
+    <string name="book_title_2">Menjadi Guru Hebat Zaman Now</string>
+    <string name="book_author_2">Robert Bala</string>
+    <string name="book_title_3">Materi Pendidikan Karakter: Pegangan Praktis Guru dan Orangtua</string>
+    <string name="book_author_3">A. M. Mangunhardjana</string>
+    <string name="book_title_4">Menjadi Guru Profesional</string>
+    <string name="book_author_4">Muhammad Anwar H.M.</string>
+    <string name="name_profile">ADIT</string>
+    <string name="find_book">Mencari buku</string>
+
+
 </resources>

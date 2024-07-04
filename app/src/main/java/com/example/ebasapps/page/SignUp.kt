@@ -3,7 +3,6 @@ package com.example.ebasapps.page
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -19,6 +18,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -46,6 +46,10 @@ fun SignUpPage(navController: NavController) {
             value = email,
             onValueChange = { email = it },
             label = { Text("Alamat Email") },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next
+            ),
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -54,7 +58,10 @@ fun SignUpPage(navController: NavController) {
             onValueChange = { password = it },
             label = { Text("Kata Sandi") },
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Next
+            ),
             trailingIcon = {
                 IconButton(
                     onClick = { passwordVisibility = !passwordVisibility },
@@ -78,12 +85,15 @@ fun SignUpPage(navController: NavController) {
             value = confirmPassword,
             onValueChange = {
                 confirmPassword = it
-                isPasswordValid = it == password // Validating against password
-                isConfirmPasswordEntered = it.isNotEmpty() // Set flag when confirmation password is entered
+                isPasswordValid = it == password
+                isConfirmPasswordEntered = it.isNotEmpty()
             },
             label = { Text("Masukkan Ulang Kata Sandi") },
             visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done
+            ),
             trailingIcon = {
                 if (passwordMatchIcon != 0) {
                     Icon(
@@ -99,15 +109,18 @@ fun SignUpPage(navController: NavController) {
 
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = { /* TODO: Handle registration */ },
+            onClick = { navController.navigate("dashboard") },
             colors = ButtonDefaults.buttonColors(Color(0xFF259C85)),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Daftar")
+            Text(
+                text = "Daftar",
+                fontSize = 20.sp
+            )
         }
         Spacer(modifier = Modifier.height(8.dp))
         TextButton(onClick = { navController.popBackStack() }) {
-            Text(text = "Sudah punya akun? Masuk", fontSize = 12.sp)
+            Text(text = "Sudah punya akun? Masuk", fontSize = 16.sp)
         }
     }
 }
